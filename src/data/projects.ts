@@ -71,7 +71,7 @@ export const projects: Project[] = [
       },
       {
         title: "동료를 설득해 테스트 도입",
-        body: "반복되는 오류 사례를 근거로 테스트가 왜 필요한지 설명했습니다. 디자인이 자주 바뀌던 시기가 지나 작업 시간이 생겼고, UI 변경이 줄면 테스트를 고칠 일도 줄어든다고 설명해 동의를 얻었습니다. 제안한 사람으로서 테스트 환경의 초기 설정은 맡았습니다.\n\n명세 문서가 부족한 레거시는 지금의 동작을 테스트로 기록해 두는 characterization 방식을 택했습니다. 결제·로그인처럼 실패하면 영향이 큰 경로부터 테스트를 만들고, 커밋 전 테스트가 실패하면 코드를 다시 보도록 설정했습니다.",
+        body: "반복되는 오류 사례를 근거로 테스트가 왜 필요한지 설명했습니다. 디자인이 자주 바뀌던 시기가 지나 작업 시간이 생겼고, UI 변경이 줄면 테스트를 고칠 일도 줄어든다고 설명해 동의를 얻었습니다. 제안한 사람으로서 테스트 환경의 초기 설정은 맡았습니다.\n\n명세 문서가 부족한 레거시는 지금의 동작을 테스트로 기록해 두는 characterization 방식을 택했습니다. 결제·로그인처럼 실패하면 영향이 큰 경로부터 테스트를 만들고, 커밋 전 테스트가 실패하면 코드를 다시 보도록 설정했습니다. 무엇을 테스트할지는 직접 정하고, 테스트 코드는 Claude Code로 작성했습니다.",
         result:
           "고친 뒤 기존 기능이 깨졌는지 커밋 전에 확인하는 절차가 자리 잡았습니다. 테스트 0개에서 시작해 지금은 유닛 테스트 1,948개와 E2E 56개가 프로젝트 전체를 검증하고 있습니다.",
       },
@@ -690,6 +690,8 @@ export const projectHref = (id: string) => `/projects/${getProject(id).id}`;
 
 // 상세 페이지 안에서 사례 하나의 위치. 목차, 섹션 id, 메인의 링크가 모두 이 규칙을 씁니다.
 export const caseAnchor = (index: number) => `case-${index + 1}`;
+// 화면 전환에서 메인의 대표 사례 제목과 상세의 사례 제목을 짝짓는 이름
+export const caseTitleName = (projectId: string, index: number) => `case-title-${projectId}-${index + 1}`;
 
 export function caseHref(projectId: string, caseTitle: string) {
   const index = getProject(projectId).cases.findIndex((c) => c.title === caseTitle);

@@ -16,7 +16,7 @@ export default function Home() {
   );
 
   return (
-    <PageShell home links={<ContactLinks />} toc={toc}>
+    <PageShell pageKey="home" home links={<ContactLinks />} toc={toc}>
       <About />
 
       <Section id="changes" title="주요 성과">

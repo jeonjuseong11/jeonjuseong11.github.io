@@ -17,7 +17,11 @@ export default function Sidebar({
 }) {
   const Name = home ? "h1" : "p";
   return (
-    <header className="pt-10 lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:py-14">
+    // 페이지 전환 때 사이드바는 따로 잡아서 움직이지 않게 합니다(globals.css 의 sidebar).
+    <header
+      className="pt-10 lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:py-14"
+      style={{ viewTransitionName: "sidebar" }}
+    >
       <Avatar className="mb-4 h-24 w-24" />
       <Name className="text-xl font-bold tracking-tight">
         {home ? <AnchorLink id="top">{profile.name}</AnchorLink> : <Link href="/">{profile.name}</Link>}

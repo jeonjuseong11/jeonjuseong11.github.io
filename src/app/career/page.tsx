@@ -19,7 +19,7 @@ export default function CareerPage() {
   );
 
   return (
-    <PageShell links={backLink} toc={toc}>
+    <PageShell pageKey="career" links={backLink} toc={toc}>
       <h1 className="text-2xl font-bold leading-[1.35] tracking-tight sm:text-3xl">경력</h1>
 
       {careers.map((c, i) => (

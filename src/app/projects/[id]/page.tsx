@@ -7,7 +7,7 @@ import CaseSection from "@/components/CaseSection";
 import DefList from "@/components/DefList";
 import PageShell from "@/components/PageShell";
 import { profile } from "@/data/profile";
-import { caseAnchor, projectHref, projects } from "@/data/projects";
+import { caseAnchor, caseTitleName, projectHref, projects } from "@/data/projects";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -28,9 +28,12 @@ function Neighbor({ label, id, title, align = "" }: { label: string; id: string;
   return (
     <p className={align}>
       <span className="block text-sm text-muted">{label}</span>
-      <Link href={projectHref(id)} className="link font-semibold">
-        {title}
-      </Link>
+      {/* 다음 페이지의 제목과 같은 name 이라, 이동할 때 이 글자가 제목 자리로 이어집니다. */}
+      <ViewTransition name={`project-title-${id}`} share="morph" default="none">
+        <Link href={projectHref(id)} className="link inline-block font-semibold">
+          {title}
+        </Link>
+      </ViewTransition>
     </p>
   );
 }
@@ -61,7 +64,7 @@ export default async function ProjectPage({ params }: Props) {
   );
 
   return (
-    <PageShell links={backLink} toc={toc}>
+    <PageShell pageKey={project.id} links={backLink} toc={toc}>
       <section id="overview">
         {/* 메인의 프로젝트 제목과 같은 name 이라, 이동할 때 제목이 이 자리로 이어집니다. */}
         <ViewTransition name={`project-title-${project.id}`} share="morph" default="none">
@@ -79,7 +82,7 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       {project.cases.map((c, i) => (
-        <CaseSection key={c.title} id={caseAnchor(i)} item={c} />
+        <CaseSection key={c.title} id={caseAnchor(i)} titleName={caseTitleName(project.id, i)} item={c} />
       ))}
 
       <nav
