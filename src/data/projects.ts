@@ -287,7 +287,7 @@ export const projects: Project[] = [
     outcome:
       "빨리 출시하려고 웹뷰 앱을 제안해 출시했고, 이후 유지보수 부담이 커져 더보기 탭을 네이티브로 옮겼습니다. 토큰 갱신 뒤 재요청이 바로 취소되던 문제와, 연결 관리 계층 두 개가 부딪혀 재연결이 두 번 일어나던 문제를 고쳤습니다. 주소록 7.5만 건을 다루는 화면이 시작 직후 멈추는 시간을 줄였고, 부가 기능의 오류가 앱 전체를 막는 일도 줄였습니다.",
     stack: [
-      "React Native 0.81",
+      "React Native 0.87",
       "React 19",
       "React Navigation",
       "WebView",
