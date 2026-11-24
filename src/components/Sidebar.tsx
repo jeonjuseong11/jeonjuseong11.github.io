@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { profile } from "@/data/profile";
+import { careers, profile } from "@/data/profile";
 import AnchorLink from "./AnchorLink";
 import Avatar from "./Avatar";
 
@@ -27,6 +27,9 @@ export default function Sidebar({
         {home ? <AnchorLink id="top">{profile.name}</AnchorLink> : <Link href="/">{profile.name}</Link>}
       </Name>
       <p className="mt-1 text-muted">{profile.role}</p>
+      <Link href="/career" className="mt-1 block text-sm text-muted underline underline-offset-4 hover:text-ink">
+        {careers[0].company} · {careers[0].period}
+      </Link>
       <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-sm lg:flex-col">{links}</ul>
       {children}
     </header>
