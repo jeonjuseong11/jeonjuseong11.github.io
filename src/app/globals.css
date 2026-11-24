@@ -125,3 +125,23 @@ h4 {
     animation: none !important;
   }
 }
+
+/* 인쇄·PDF 저장: 흰 종이에 A4로, 화면용 목차는 뺍니다. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 12mm;
+  }
+  body {
+    background: #fff;
+  }
+  nav[aria-label="목차"],
+  nextjs-portal {
+    display: none;
+  }
+  /* 제목이 쪽 맨 아래에 홀로 남지 않게 합니다. */
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+}
